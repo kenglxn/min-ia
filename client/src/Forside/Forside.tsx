@@ -6,7 +6,7 @@ import { KursOgWebinarerIkon } from "./ikoner/KursOgWebinarerIkon";
 import { LenkeflisEkstern } from "../LenkeflisEkstern/LenkeflisEkstern";
 import { IdebankenIkon } from "./ikoner/IdebankenIkon";
 import { ArbeidsmiljøPortalenIkon } from "./ikoner/ArbeidsmiljøportalenIkon";
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAggregertStatistikk } from "../hooks/useAggregertStatistikk";
 import { erFerdigNedlastet, RestStatus } from "../integrasjoner/rest-status";
 import { Infographic } from "../komponenter/Infographic/Infographic";
@@ -26,13 +26,7 @@ import { InkluderendeArbeidslivPanel } from "../InkluderendeArbeidslivPanel/Inkl
 import { ManglerRettighetRedirect } from "../utils/Redirects";
 import { tomtDataobjekt } from "../integrasjoner/aggregert-statistikk-api";
 
-interface ForsideProps {
-  harNoenOrganisasjoner: boolean;
-}
-
-export const Forside: FunctionComponent<ForsideProps> = ({
-  harNoenOrganisasjoner,
-}) => {
+export const Forside = ({}) => {
   const bredde = 60;
   const høyde = 60;
 
@@ -57,18 +51,14 @@ export const Forside: FunctionComponent<ForsideProps> = ({
 
   const infographicEllerBannerHvisError =
     aggregertStatistikk.status === RestStatus.Feil ||
-    (!harNoenOrganisasjoner &&
-      aggregertStatistikk.status !== RestStatus.IkkeLastet) ? (
+    aggregertStatistikk.status !== RestStatus.IkkeLastet ? (
       <Alert variant={"error"} className={styles.forsideAlert}>
         Det har skjedd en feil. Vennligst prøv igjen senere.
       </Alert>
     ) : (
       <Infographic
         {...hentUtInfographicData(aggregertStatistikkData)}
-        nedlastingPågår={
-          aggregertStatistikk.status === RestStatus.IkkeLastet ||
-          aggregertStatistikk.status === RestStatus.LasterInn
-        }
+        nedlastingPågår={!erFerdigNedlastet(aggregertStatistikk)}
       />
     );
 
