@@ -6,7 +6,7 @@ import { RestStatus } from "../integrasjoner/rest-status";
 import { Layout } from "../komponenter/Layout/Layout";
 import Head from "next/head";
 import React from "react";
-import { getMinSideArbeidsgiverUrl } from "../utils/miljøUtils";
+import { ManglerRettighetRedirect } from "../utils/Redirects";
 
 const Home = (props: { page: PageProps }) => {
   const organisasjonerBrukerHarTilgangTil = useAltinnOrganisasjoner();
@@ -18,9 +18,7 @@ const Home = (props: { page: PageProps }) => {
     organisasjonerBrukerHarTilgangTil.data.length === 0;
 
   if (harIngenOrganisasjoner) {
-    return () => {
-      window.location.replace(`${getMinSideArbeidsgiverUrl()}/mangler-tilgang`);
-    };
+    return <ManglerRettighetRedirect />;
   }
 
   const forsideEllerInnloggingsside = trengerInnlogging ? (
