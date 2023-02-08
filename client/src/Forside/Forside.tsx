@@ -52,7 +52,7 @@ export const Forside = ({}) => {
 
   const infographicEllerBannerHvisError =
     aggregertStatistikk.status === RestStatus.Feil ||
-    aggregertStatistikk.status !== RestStatus.IkkeLastet ? (
+    aggregertStatistikk.status === RestStatus.IkkeLastet ? (
       <Alert variant={"error"} className={styles.forsideAlert}>
         Det har skjedd en feil. Vennligst prøv igjen senere.
       </Alert>
