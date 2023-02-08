@@ -25,6 +25,7 @@ import {
 import { InkluderendeArbeidslivPanel } from "../InkluderendeArbeidslivPanel/InkluderendeArbeidslivPanel";
 import { ManglerRettighetRedirect } from "../utils/Redirects";
 import { tomtDataobjekt } from "../integrasjoner/aggregert-statistikk-api";
+import {logger, predefinerteFeilmeldinger} from "../utils/logger";
 
 export const Forside = ({}) => {
   const bredde = 60;
@@ -125,8 +126,10 @@ export const Forside = ({}) => {
     case RestStatus.IkkeInnlogget:
       return <Innloggingsside redirectUrl={window.location.href} />;
     case RestStatus.IngenTilgang:
+      logger.info(predefinerteFeilmeldinger.manglerTilgangRedirect)
       return <ManglerRettighetRedirect />;
     default:
+
       return forside;
   }
 };
