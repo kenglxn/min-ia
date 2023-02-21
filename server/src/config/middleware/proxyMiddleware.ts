@@ -40,6 +40,7 @@ const iaTjenestemetrikkerProxyOptions: Options = {
     );
     if (!tokenSet?.expired() && tokenSet?.access_token) {
       req.headers["authorization"] = `Bearer ${tokenSet.access_token}`;
+      console.log(`Token: ${tokenSet.access_token}`)
     }
     return undefined;
   },
