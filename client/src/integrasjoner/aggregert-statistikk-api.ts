@@ -1,8 +1,8 @@
-import { API_BASE_PATH } from "../utils/konstanter";
+import { BASE_PATH } from "../utils/konstanter";
 import { RestRessurs, RestStatus } from "./rest-status";
 import { fetchMedFeilhåndtering } from "./api-utils";
 import * as z from "zod";
-import {logger, predefinerteFeilmeldinger} from "../utils/logger";
+import { logger, predefinerteFeilmeldinger } from "../utils/logger";
 
 export enum Statistikkategori {
   LAND = "LAND",
@@ -41,7 +41,7 @@ export const tomtDataobjekt: AggregertStatistikkDto = {
 };
 
 const sykefraværshistorikkPath = (orgnr: string) =>
-  `${API_BASE_PATH}/${orgnr}/v1/sykefravarshistorikk/aggregert`;
+  `${(BASE_PATH + "/api")}/${orgnr}/v1/sykefravarshistorikk/aggregert`;
 
 export const hentAggregertStatistikk = async (
   orgnr: string

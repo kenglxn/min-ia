@@ -20,8 +20,6 @@ let _remoteJWKSet:
   | Uint8Array
   | GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
 
-//const IDPORTEN_WELL_KNOWN_URL="https://fakedings.dev-gcp.nais.io/fake/.well-known/openid-configuration"
-
 export async function initIdporten() {
   if (process.env.NODE_ENV === "development") {
     // I labs så returnerer vi mock uansett
