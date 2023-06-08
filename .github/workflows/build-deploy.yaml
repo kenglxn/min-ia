@@ -17,16 +17,16 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'yarn'
           cache-dependency-path: |
             yarn.lock
             server/yarn.lock
 
       - name: Install dependencies
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
         run: yarn install --immutable && cd server && yarn install --immutable
+        env:
+          NODE_AUTH_TOKEN: ${{ sets.READER_TOKEN }}
 
       - name: Run tests
         run: yarn test
