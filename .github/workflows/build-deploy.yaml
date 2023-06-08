@@ -24,9 +24,12 @@ jobs:
             server/yarn.lock
 
       - name: Install dependencies
-        run: yarn install --immutable && cd server && yarn install --immutable
+        run: yarn install --frozen-lockfile --prefer-offline
         env:
           NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+
+      - name: Install dependencies (server)
+        run: cd server && yarn install --frozen-lockfile --prefer-offline
 
       - name: Run tests
         run: yarn test
