@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import * as hooks from "../../src/hooks/useOrgnr";
-import * as iatjenestemetrikker from "../../src/integrasjoner/ia-tjenestemetrikker-api";
+import * as hooks from "./useOrgnr";
+import * as iatjenestemetrikker from "../integrasjoner/ia-tjenestemetrikker-api";
 import { IaTjeneste } from "../integrasjoner/ia-tjenestemetrikker-api";
 
 import { useSendIaTjenesteMetrikkOnEvent } from "./useSendIaTjenesteMetrikkOnEvent";

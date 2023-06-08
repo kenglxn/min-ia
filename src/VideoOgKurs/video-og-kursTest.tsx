@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import VideoOgKurs from "../../src/pages/video-og-kurs";
-import logEvent from "../../src/amplitude/logEvent";
+import VideoOgKurs from "../pages/video-og-kurs";
+import logEvent from "../amplitude/logEvent";
 import { useRouter } from "next/router";
 
 jest.mock("../../src/amplitude/logEvent");

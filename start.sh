@@ -2,5 +2,5 @@
 
 cd server
 exec yarn start &
-cd ../client
+cd ..
 exec yarn start

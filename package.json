@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ins": "yarn install && cd ../server && yarn install",
+    "ins": "yarn install && cd server && yarn install",
     "dev": "yarn lint && next dev",
     "start": "next start",
     "build": "next build",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "test": "jest",
     "coverage": "jest --coverage",
     "watch": "jest --watch",

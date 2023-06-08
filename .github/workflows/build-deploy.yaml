@@ -20,30 +20,23 @@ jobs:
           node-version: '16'
           cache: 'yarn'
           cache-dependency-path: |
-            client/yarn.lock
+            yarn.lock
             server/yarn.lock
 
-      - name: Install client dependencies
-        working-directory: client
-        run: yarn install --immutable
-
-      - name: Install server dependencies
-        working-directory: server
-        run: yarn install --immutable
+      - name: Install dependencies
+        run: yarn install --immutable && cd server && yarn install --immutable
 
       - name: Run tests
-        working-directory: client
         run: yarn test
 
-      - name: Lint client
+      - name: Lint
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
-          eslint_dir: client/
+          eslint_dir: src/
           eslint_extensions: js,jsx,ts,tsx
 
-      - name: Build client
-        working-directory: client
+      - name: Build
         run: yarn build
 
       - name: Build server
