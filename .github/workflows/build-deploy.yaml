@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable && cd server && yarn install --immutable
         env:
-          NODE_AUTH_TOKEN: ${{ sets.READER_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
       - name: Run tests
         run: yarn test
