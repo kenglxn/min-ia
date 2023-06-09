@@ -14,11 +14,8 @@ COPY --chown=nextjs:nodejs server/node_modules server/node_modules
 COPY --chown=nextjs:nodejs server/build server/build
 
 ## Client side
-COPY --chown=nextjs:nodejs client/package.json client/package.json
-COPY --chown=nextjs:nodejs client/next.config.js client/next.config.js
-COPY --chown=nextjs:nodejs client/next-env.d.ts client/next-env.d.ts
-COPY --chown=nextjs:nodejs client/tsconfig.json client/tsconfig.json
-COPY --chown=nextjs:nodejs client/.next client/.next
+COPY --chown=nextjs:nodejs .next/standalone ./
+COPY --chown=nextjs:nodejs .next/static ./.next/static
 
 COPY --chown=nextjs:nodejs start.sh start.sh
 
