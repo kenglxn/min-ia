@@ -13,7 +13,6 @@ COPY --chown=nextjs:nodejs server/package.json server/package.json
 COPY --chown=nextjs:nodejs server/node_modules server/node_modules
 COPY --chown=nextjs:nodejs server/build server/build
 
-## Client side
 COPY --chown=nextjs:nodejs .next/standalone ./
 COPY --chown=nextjs:nodejs .next/static ./.next/static
 
