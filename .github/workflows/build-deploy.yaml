@@ -17,7 +17,8 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
+          registry-url: https://npm.pkg.github.com/
           cache: 'yarn'
           cache-dependency-path: |
             client/yarn.lock
@@ -26,10 +27,14 @@ jobs:
       - name: Install client dependencies
         working-directory: client
         run: yarn install --immutable
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
       - name: Install server dependencies
         working-directory: server
         run: yarn install --immutable
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
       - name: Run tests
         working-directory: client
@@ -62,7 +67,7 @@ jobs:
 
   deployAppToDev:
     name: Deploy app to dev
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/fjerne-loginservice'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/fix_bygg'
     needs: build
     runs-on: ubuntu-latest
     steps:
